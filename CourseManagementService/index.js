@@ -15,7 +15,7 @@ app.use(cors()); // Enable CORS for all routes
 
 // Welcome route
 app.get('/', (req, res) => {
-  res.send('heloo');
+  res.send('Course Managment system');
 });
 // Routes
 app.use('/course', courseRoute);
