@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const courseRoute = require('./route/courseRoute');
 const { connectToDatabase } = require('./config/database');
-
+const path = require('path')
 
 const app = express();
 const PORT = process.env.PORT || 6300;
@@ -11,11 +11,12 @@ const PORT = process.env.PORT || 6300;
 // Middleware
 app.use(bodyParser.json());
 app.use(cors()); // Enable CORS for all routes
-
+app.set('view engine','ejs');
+app.set('views',path.join(__dirname,'pages'));
 
 // Welcome route
 app.get('/', (req, res) => {
-  res.send('Course Managment system');
+ res.render('index.ejs')
 });
 // Routes
 app.use('/course', courseRoute);
